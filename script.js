@@ -61,8 +61,14 @@ function showPreview() {
     START COUNTDOWN
 ==================================*/
 function startCountdown() {
-    previewBox.classList.add("hidden");  
-    centerBox.style.display = "block";  
+    // IF AUTO MODE → hide center
+if (mode === "auto") {
+    centerBox.style.display = "none";
+}
+
+// always show preview box
+previewBox.classList.remove("hidden");
+
 
     let count = 3;
     countdownEl.innerText = `Redirecting in ${count}...`;
@@ -109,3 +115,4 @@ else if (mode === "button") {
         startCountdown();
     };
 }
+

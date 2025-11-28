@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    const correctPassword = "jkadmin123"; // CHANGE THIS
+
+    let userPass = localStorage.getItem("jk_admin_access");
+
+    if (!userPass) {
+        userPass = prompt("Enter Admin Password:");
+        if (userPass === correctPassword) {
+            localStorage.setItem("jk_admin_access", "true");
+            alert("Access Granted ✔");
+        } else {
+            alert("Access Denied ❌");
+            window.location.href = "index.html"; // kick out
+        }
+    }
+  </script>
+
   <meta charset="UTF-8" />
   <title>JK Networks – Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -454,3 +471,4 @@
   </script>
 </body>
 </html>
+

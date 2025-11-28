@@ -114,8 +114,9 @@ else if (mode === "button") {
     showPreview();
 
     continueBtn.onclick = () => {
-        startCountdown();
+        window.location.href = url;
     };
 }
+
 
 

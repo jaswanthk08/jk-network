@@ -67,12 +67,12 @@ function showPreview() {
     START COUNTDOWN
 ==================================*/
 function startCountdown() {
-    previewBox.classList.add("hidden");
+   // previewBox.classList.add("hidden");
 
     // After preview, always show main box
     centerBox.style.display = "block";
 
-    let count = 3;
+    let count = 5;
     countdownEl.innerText = `Redirecting in ${count}...`;
 
     let timer = setInterval(() => {
@@ -116,3 +116,4 @@ else if (mode === "button") {
         startCountdown();
     };
 }
+

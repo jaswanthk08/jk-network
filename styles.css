@@ -222,6 +222,56 @@ body {
     transform: rotate(6deg);
 }
 
+/* ===========================
+   MOBILE RESPONSIVE FIX
+=========================== */
+@media (max-width: 600px) {
+
+    /* Move center box UP */
+    .center-box {
+        top: 15% !important;
+        transform: translateX(-50%);
+    }
+
+    /* Reduce logo size */
+    .logo {
+        width: 110px !important;
+    }
+
+    /* Reduce title size */
+    .neon-title {
+        font-size: 28px !important;
+    }
+
+    /* Reduce countdown size */
+    .countdown-text {
+        font-size: 22px !important;
+    }
+
+    /* Move preview box further DOWN */
+    .preview-box {
+        top: 75% !important;
+        width: 90% !important;
+        padding: 18px !important;
+    }
+
+    /* Reduce preview text sizes */
+    #preview-domain {
+        font-size: 20px !important;
+    }
+
+    .preview-box h3 {
+        font-size: 16px !important;
+    }
+
+    /* Reduce button */
+    .neon-button,
+    #continueBtn {
+        font-size: 16px !important;
+        padding: 10px 20px !important;
+    }
+}
+
 
 
 

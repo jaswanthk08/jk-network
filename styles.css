@@ -133,13 +133,14 @@ body {
 
 /* Center content */
 .center-box {
-    position: relative;
-    z-index: 2;
-    top: 50%;
+    position: absolute;
+    top: 28%;   /* moved up */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     text-align: center;
+    z-index: 5;
 }
+
 
 /* Logo */
 .logo {
@@ -220,5 +221,6 @@ body {
     right: 6%;
     transform: rotate(6deg);
 }
+
 
 

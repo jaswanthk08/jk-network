@@ -81,7 +81,7 @@ body {
 /* Link Preview Box Before Redirect */
 .preview-box {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 330px;
@@ -219,3 +219,4 @@ body {
     right: 6%;
     transform: rotate(6deg);
 }
+

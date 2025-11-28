@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JK Networks</title>
-
-    <link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JK Networks</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Container for full screen -->
-    <div class="main-container">
+  <!-- Background glow -->
+  <div class="bg-glow"></div>
 
-        <!-- Logo -->
-        <img src="JK _Logo.jpg" alt="JK Logo" class="jk-logo">
+  <!-- Floating photos -->
+  <img src="job.jpg" class="photo photo-left" alt="Left Image">
+  <img src="movie.png" class="photo photo-right" alt="Right Image">
 
-        <!-- Website Name -->
-        <h1 class="site-title">JK Networks</h1>
+  <!-- Main content -->
+  <div class="center-box">
+      <img src="JK _Logo.jpg" class="logo" alt="JK Logo">
+      <h1 id="title" class="neon-title">JK Networks</h1>
+      <h2 id="countdown" class="countdown-text"></h2>
+      <button id="redirectBtn" class="neon-button">Click Me</button>
+  </div>
 
-        <!-- Button -->
-        <button class="redirect-btn">Click Me</button>
-
-        <!-- Image placeholders -->
-        <img src="job.jpg" class="photo photo1" alt="Random Image 1">
-        <img src="movie.png" class="photo photo2" alt="Random Image 2">
-
-    </div>
-    
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

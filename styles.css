@@ -30,6 +30,106 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* SMOOTH NOISE / GRAIN LAYER */
+.bg-noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    opacity: 0.08;
+    z-index: 3;
+    mix-blend-mode: overlay;
+    animation: noiseMove 0.4s infinite;
+}
+
+@keyframes noiseMove {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-5px,-3px); }
+    100% { transform: translate(0,0); }
+}
+
+/* FLOATING PARTICLES */
+#particles-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #0ff;
+    border-radius: 50%;
+    filter: blur(4px);
+    opacity: 0.8;
+    animation: floatY 4s infinite ease-in-out alternate,
+               floatX 6s infinite ease-in-out alternate;
+}
+
+@keyframes floatY {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(40px); }
+}
+
+@keyframes floatX {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(40px); }
+}
+
+/* Link Preview Box Before Redirect */
+.preview-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    padding: 25px;
+    text-align: center;
+    border-radius: 18px;
+    background: rgba(0, 25, 40, 0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.45);
+    z-index: 10;
+}
+
+.preview-title {
+    font-size: 20px;
+    color: #9befff;
+    margin-bottom: 10px;
+}
+
+.preview-domain {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.8);
+}
+
+.continue-button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    color: #02141c;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#00d8ff,#0084ff);
+    box-shadow: 0 0 25px #00eaff;
+    transition: 0.25s ease;
+}
+
+.continue-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px #00eaff;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Center content */
 .center-box {
     position: relative;
@@ -44,7 +144,14 @@ body {
 .logo {
     width: 150px;
     margin-bottom: 10px;
-    filter: drop-shadow(0 0 20px rgba(0,255,255,0.5));
+    filter: drop-shadow(0 0 15px #0ff);
+    animation: pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { filter: drop-shadow(0 0 10px #0ff); }
+    50% { filter: drop-shadow(0 0 25px #0ff); }
+    100% { filter: drop-shadow(0 0 10px #0ff); }
 }
 
 /* Neon title */
@@ -84,6 +191,11 @@ body {
 .neon-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0,255,255,0.8);
+}
+
+.neon-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 40px #0ff;
 }
 
 /* Floating photos */

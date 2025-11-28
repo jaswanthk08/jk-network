@@ -11,16 +11,32 @@
   <!-- Background glow -->
   <div class="bg-glow"></div>
 
+  <!-- Smooth grain / noise overlay -->
+  <div class="bg-noise"></div>
+
+  <!-- Floating particle container -->
+  <div id="particles-container"></div>
+
   <!-- Floating photos -->
   <img src="job.jpg" class="photo photo-left" alt="Left Image">
   <img src="movie.png" class="photo photo-right" alt="Right Image">
 
+  <!-- Link Preview Modal (Before Redirect) -->
+  <div id="preview-box" class="preview-box hidden">
+      <h1 class="preview-title">You are visiting:</h1>
+      <p id="preview-domain" class="preview-domain"></p>
+
+      <button id="continueBtn" class="continue-button">
+        Continue →
+      </button>
+  </div>
+
   <!-- Main content -->
   <div class="center-box">
-      <img src="JK _Logo.jpg" class="logo" alt="JK Logo">
+      <img src="JK__Logo.png" class="logo" alt="JK Logo">
       <h1 id="title" class="neon-title">JK Networks</h1>
       <h2 id="countdown" class="countdown-text"></h2>
-      <button id="redirectBtn" class="neon-button">Click Me</button>
+      <button id="redirectBtn" class="neon-button">Click Here</button>
   </div>
 
   <script src="script.js"></script>

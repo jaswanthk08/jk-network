@@ -99,6 +99,7 @@ if (!url) {
 
 /* AUTO MODE */
 else if (mode === "auto") {
+    continueBtn.style.display = "none";
     button.style.display = "none";
     showPreview();
 
@@ -116,4 +117,5 @@ else if (mode === "button") {
         startCountdown();
     };
 }
+
 

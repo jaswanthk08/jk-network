@@ -50,10 +50,16 @@ function getDomain(link) {
 function showPreview() {
     previewDomain.textContent = getDomain(url);
 
-    // Hide main UI
-    centerBox.style.display = "none";
+    // AUTO MODE → hide center
+    if (mode === "auto") {
+        centerBox.style.display = "none";
+    }
 
-    // Show preview box
+    // BUTTON MODE → keep logo/title visible
+    if (mode === "button") {
+        centerBox.style.display = "block";
+    }
+
     previewBox.classList.remove("hidden");
 }
 
@@ -61,14 +67,10 @@ function showPreview() {
     START COUNTDOWN
 ==================================*/
 function startCountdown() {
-    // IF AUTO MODE → hide center
-if (mode === "auto") {
-    centerBox.style.display = "none";
-}
+    previewBox.classList.add("hidden");
 
-// always show preview box
-previewBox.classList.remove("hidden");
-
+    // After preview, always show main box
+    centerBox.style.display = "block";
 
     let count = 3;
     countdownEl.innerText = `Redirecting in ${count}...`;
@@ -95,24 +97,22 @@ if (!url) {
     button.style.display = "none";
 }
 
-/* AUTO MODE → Skip Preview → Direct Countdown */
+/* AUTO MODE */
 else if (mode === "auto") {
     button.style.display = "none";
     showPreview();
 
-    // Auto press continue after 1.2 sec
     setTimeout(() => {
         startCountdown();
     }, 1200);
 }
 
-/* BUTTON MODE → Show preview → User clicks continue */
+/* BUTTON MODE */
 else if (mode === "button") {
-    button.style.display = "none"; // hide old button
+    button.style.display = "none";
     showPreview();
 
     continueBtn.onclick = () => {
         startCountdown();
     };
 }
-

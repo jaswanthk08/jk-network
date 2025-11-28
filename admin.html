@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- PASSWORD PROTECTION -->
   <script>
     const correctPassword = "8903"; // CHANGE THIS
 
@@ -31,8 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      font-family: "Poppins", system-ui, sans-serif;
       background: radial-gradient(circle at 10% 20%, #081122, #020409 60%, #000);
       color: #f7f7f7;
       overflow: hidden;
@@ -55,11 +55,7 @@
       z-index: 0;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Main card */
     .admin-card {
@@ -72,7 +68,7 @@
       padding: 28px 24px 26px;
       border: 1px solid rgba(0, 255, 255, 0.25);
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.8),
-        0 0 35px rgba(0, 255, 255, 0.2);
+                  0 0 35px rgba(0, 255, 255, 0.2);
       backdrop-filter: blur(18px);
       overflow: hidden;
     }
@@ -89,7 +85,6 @@
         rgba(255, 0, 255, 0.35)
       );
       opacity: 0.25;
-      mix-blend-mode: screen;
       pointer-events: none;
     }
 
@@ -97,7 +92,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
       margin-bottom: 20px;
     }
 
@@ -119,27 +113,18 @@
       border-radius: 999px;
       border: 1px solid rgba(0, 255, 255, 0.6);
       background: rgba(0, 0, 0, 0.4);
-      letter-spacing: 0.06em;
     }
 
     .admin-subtitle {
       font-size: 13px;
-      margin-bottom: 18px;
       color: #c4c6ff;
+      margin-bottom: 18px;
       opacity: 0.85;
     }
 
-    /* Form */
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      margin-bottom: 6px;
-      color: #e5f9ff;
-    }
+    /* Form Inputs */
+    .form-group { margin-bottom: 16px; }
+    label { font-size: 13px; margin-bottom: 6px; }
 
     .input-row {
       display: flex;
@@ -147,150 +132,80 @@
       align-items: center;
     }
 
-    input[type="text"],
     input[type="url"] {
       flex: 1;
-      padding: 10px 12px;
+      padding: 10px;
       border-radius: 10px;
-      border: 1px solid rgba(0, 255, 255, 0.2);
+      border: 1px solid rgba(0,255,255,0.2);
       background: rgba(3, 6, 20, 0.8);
       color: #e7faff;
       font-size: 13px;
       outline: none;
-      transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    input::placeholder {
-      color: #8290a5;
-      font-size: 12px;
     }
 
     input:focus {
-      border-color: rgba(0, 255, 255, 0.7);
-      box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-      background: rgba(3, 10, 30, 0.95);
+      border-color: rgba(0,255,255,0.7);
+      box-shadow: 0 0 8px rgba(0,255,255,0.4);
     }
 
+    /* Buttons */
     .primary-btn {
       padding: 10px 18px;
       border-radius: 999px;
       border: none;
-      outline: none;
       background: radial-gradient(circle at 10% 20%, #00e6ff, #007bff 70%);
       color: #020409;
       font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.04em;
       cursor: pointer;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 16px rgba(0, 255, 255, 0.6);
-      transition: transform 0.15s ease, box-shadow 0.15s ease,
-        filter 0.15s ease;
-      white-space: nowrap;
+      box-shadow: 0 0 16px rgba(0,255,255,0.6);
+      transition: 0.2s;
     }
 
     .primary-btn:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 22px rgba(0, 255, 255, 0.9);
-      filter: brightness(1.1);
+      box-shadow: 0 0 22px rgba(0,255,255,0.9);
+      transform: scale(1.02);
     }
 
-    .primary-btn:active {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-      filter: brightness(0.95);
-    }
-
-    .btn-icon {
-      font-size: 14px;
-    }
-
-    .outputs {
-      margin-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 14px;
-    }
-
-    .output-block {
-      margin-bottom: 12px;
-    }
-
-    .output-label {
-      font-size: 12px;
-      margin-bottom: 4px;
-      color: #9fb3ff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .copy-btn {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.5);
-      background: rgba(0, 8, 20, 0.8);
-      color: #dffbff;
-      font-size: 11px;
+    /* Logout Button */
+    .logout-btn {
+      margin-top: 16px;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid rgba(0,255,255,0.5);
+      background: rgba(0,20,30,0.7);
+      color: #0ff;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s ease, transform 0.15s ease;
-      white-space: nowrap;
+      box-shadow: 0 0 12px rgba(0,255,255,0.4);
+      transition: 0.2s;
+      width: 100%;
     }
 
-    .copy-btn:hover {
-      background: rgba(0, 255, 255, 0.15);
-      transform: translateY(-1px);
-    }
-
-    .copy-btn:active {
-      transform: translateY(0);
+    .logout-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(0,255,255,0.8);
     }
 
     .mono-output {
       width: 100%;
       padding: 8px 10px;
       border-radius: 9px;
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      background: rgba(2, 8, 24, 0.9);
+      background: rgba(2,8,24,0.9);
+      border: 1px solid rgba(0,255,255,0.2);
+      font-family: "JetBrains Mono", monospace;
       color: #e7f5ff;
       font-size: 12px;
-      font-family: "JetBrains Mono", "Fira Code", monospace;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      overflow-x: auto;
       white-space: nowrap;
     }
 
-    .hint {
-      margin-top: 6px;
-      font-size: 11px;
-      color: #7f8aa8;
-    }
-
-    .footer-line {
-      margin-top: 12px;
-      font-size: 11px;
-      color: #596078;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .badge-pill {
+    .copy-btn {
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.4);
-      padding: 3px 10px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #b7faff;
-      background: rgba(0, 10, 25, 0.7);
+      font-size: 11px;
+      cursor: pointer;
+      border: 1px solid rgba(0,255,255,0.5);
     }
 
     /* Toast */
@@ -298,178 +213,121 @@
       position: fixed;
       bottom: 18px;
       left: 50%;
-      transform: translateX(-50%) translateY(60px);
-      background: rgba(0, 0, 0, 0.85);
-      color: #eaffff;
-      padding: 8px 16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      padding: 10px 18px;
       border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid rgba(0, 255, 255, 0.6);
-      box-shadow: 0 0 18px rgba(0, 255, 255, 0.5);
+      color: white;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 10;
+      transition: 0.3s;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    @media (max-width: 480px) {
-      .admin-card {
-        padding: 22px 16px 18px;
-      }
-
-      .admin-title {
-        font-size: 20px;
-      }
-    }
+    .toast.show { opacity: 1; }
   </style>
 </head>
+
 <body>
   <div class="bg-glow"></div>
 
   <div class="admin-card">
+
     <div class="admin-header">
       <div>
-        <div class="admin-title">
-          <span class="neon">JK Networks</span> Admin
-        </div>
-        <div class="admin-subtitle">
-          Paste any original URL and generate your redirect links in 1 click.
-        </div>
+        <div class="admin-title"><span class="neon">JK Networks</span> Admin</div>
+        <div class="admin-subtitle">Paste any original URL and generate redirect links.</div>
       </div>
       <div class="admin-badge">Internal Use</div>
     </div>
 
     <!-- Input -->
     <div class="form-group">
-      <label for="originalUrl">Original URL</label>
+      <label>Original URL</label>
       <div class="input-row">
-        <input
-          type="url"
-          id="originalUrl"
-          placeholder="Paste YouTube / Job / Google / Telegram link here..."
-        />
-        <button id="generateBtn" class="primary-btn">
-          <span class="btn-icon">⚡</span> Generate
-        </button>
+        <input type="url" id="originalUrl" placeholder="Paste URL here...">
+        <button id="generateBtn" class="primary-btn">⚡ Generate</button>
       </div>
       <div class="hint">
-        Your base domain:
-        <span class="neon" style="font-size: 11px;">
-          https://jaswanthk08.github.io/jk-network/
-        </span>
+        Base URL:
+        <span class="neon" style="font-size: 11px;">https://jaswanthk08.github.io/jk-network/</span>
       </div>
     </div>
 
-    <!-- Outputs -->
     <div class="outputs">
       <div class="output-block">
-        <div class="output-label">
-          <span>Auto redirect link (3-sec countdown)</span>
-          <button class="copy-btn" data-target="autoLink">
-            📋 Copy
-          </button>
+        <div class="output-label">Auto Redirect Link (5 sec)
+          <button class="copy-btn" data-target="autoLink">Copy</button>
         </div>
-        <div class="mono-output" id="autoLink">—</div>
+        <div id="autoLink" class="mono-output">—</div>
       </div>
 
       <div class="output-block">
-        <div class="output-label">
-          <span>Button redirect link (Click Me)</span>
-          <button class="copy-btn" data-target="buttonLink">
-            📋 Copy
-          </button>
+        <div class="output-label">Button Redirect Link
+          <button class="copy-btn" data-target="buttonLink">Copy</button>
         </div>
-        <div class="mono-output" id="buttonLink">—</div>
+        <div id="buttonLink" class="mono-output">—</div>
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer-line">
-      <span>Links are auto URL-encoded for safety.</span>
-      <span class="badge-pill">Generated by JK Networks</span>
+      <span style="font-size: 12px;">Links auto-encoded for safety.</span>
+      <span class="badge-pill">JK Networks</span>
     </div>
+
+    <!-- LOGOUT BUTTON -->
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
   </div>
 
   <!-- Toast -->
-  <div id="toast" class="toast">Copied to clipboard</div>
+  <div id="toast" class="toast">Copied!</div>
 
   <script>
     const baseUrl = "https://jaswanthk08.github.io/jk-network/";
 
     const originalInput = document.getElementById("originalUrl");
     const generateBtn = document.getElementById("generateBtn");
+    const toast = document.getElementById("toast");
+
     const autoLinkEl = document.getElementById("autoLink");
     const buttonLinkEl = document.getElementById("buttonLink");
-    const toast = document.getElementById("toast");
 
     function showToast(msg) {
       toast.textContent = msg;
       toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 1600);
+      setTimeout(() => toast.classList.remove("show"), 1500);
     }
 
     function generateLinks() {
       const original = originalInput.value.trim();
-      if (!original) {
-        showToast("Please paste a URL first.");
-        originalInput.focus();
-        return;
-      }
+      if (!original) return showToast("Paste a valid URL!");
 
-      try {
-        // URL encode safely
-        const encoded = encodeURIComponent(original);
+      const encoded = encodeURIComponent(original);
 
-        const autoLink = `${baseUrl}?mode=auto&url=${encoded}`;
-        const buttonLink = `${baseUrl}?mode=button&url=${encoded}`;
+      autoLinkEl.textContent = `${baseUrl}?mode=auto&url=${encoded}`;
+      buttonLinkEl.textContent = `${baseUrl}?mode=button&url=${encoded}`;
 
-        autoLinkEl.textContent = autoLink;
-        buttonLinkEl.textContent = buttonLink;
-
-        showToast("Links generated ✅");
-      } catch (err) {
-        console.error(err);
-        showToast("Invalid URL format.");
-      }
+      showToast("Links Generated ✔");
     }
 
-    generateBtn.addEventListener("click", generateLinks);
+    generateBtn.onclick = generateLinks;
 
-    // Allow pressing Enter in input
-    originalInput.addEventListener("keyup", (e) => {
-      if (e.key === "Enter") {
-        generateLinks();
-      }
+    document.querySelectorAll(".copy-btn").forEach(btn => {
+      btn.onclick = () => {
+        const text = document.getElementById(btn.dataset.target).textContent;
+        if (text === "—") return showToast("Generate link first!");
+        navigator.clipboard.writeText(text);
+        showToast("Copied ✔");
+      };
     });
 
-    // Copy buttons
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const targetId = btn.getAttribute("data-target");
-        const text = document.getElementById(targetId).textContent;
-
-        if (!text || text === "—") {
-          showToast("Generate a link first.");
-          return;
-        }
-
-        try {
-          await navigator.clipboard.writeText(text);
-          showToast("Copied to clipboard ✅");
-        } catch (err) {
-          console.error(err);
-          showToast("Copy failed. Select & copy manually.");
-        }
-      });
-    });
+    /* LOGOUT FUNCTION */
+    function logout() {
+      localStorage.removeItem("jk_admin_access");
+      alert("Logged out!");
+      location.reload();
+    }
   </script>
+
 </body>
 </html>
-
-

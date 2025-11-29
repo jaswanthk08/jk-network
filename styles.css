@@ -1,15 +1,31 @@
-/* Fullscreen dark neon background */
-body {
+/* ===============================================
+   GLOBAL – RESET & FIX MOBILE OVERFLOW
+=============================================== */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    background: radial-gradient(circle at 10% 20%, #081122, #020409 60%, #000);
-    overflow: hidden;
-    font-family: "Poppins", sans-serif;
-    color: white;
+    box-sizing: border-box;
 }
 
-/* Rotating glow animation */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;      /* Prevent horizontal scroll */
+    overscroll-behavior: none;
+}
+
+/* ===============================================
+   BACKGROUND
+=============================================== */
+body {
+    background: radial-gradient(circle at 10% 20%, #081122, #020409 60%, #000);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    position: relative;
+    overflow-y: hidden;      /* Prevent vertical scroll in redirect screen */
+}
+
+/* Rotating glow */
 .bg-glow {
     position: absolute;
     inset: -50%;
@@ -30,7 +46,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* SMOOTH NOISE / GRAIN LAYER */
+/* Noise / Grain */
 .bg-noise {
     position: fixed;
     inset: 0;
@@ -48,7 +64,7 @@ body {
     100% { transform: translate(0,0); }
 }
 
-/* FLOATING PARTICLES */
+/* Floating Particle Lights */
 #particles-container {
     position: fixed;
     inset: 0;
@@ -64,83 +80,32 @@ body {
     border-radius: 50%;
     filter: blur(4px);
     opacity: 0.8;
-    animation: floatY 4s infinite ease-in-out alternate,
-               floatX 6s infinite ease-in-out alternate;
+    animation: floatY 4s infinite alternate ease-in-out,
+               floatX 6s infinite alternate ease-in-out;
 }
 
 @keyframes floatY {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(40px); }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(35px); }
 }
 
 @keyframes floatX {
-    0% { transform: translateX(0px); }
+    0% { transform: translateX(0); }
     100% { transform: translateX(40px); }
 }
 
-/* Link Preview Box Before Redirect */
-.preview-box {
-    position: absolute;
-    top: 75%;              /* move it DOWN — adjust 70–80% */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 330px;
-    padding: 25px;
-    text-align: center;
-    border-radius: 18px;
-    background: rgba(0, 25, 40, 0.55);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.45);
-    z-index: 10;
-}
-
-
-.preview-title {
-    font-size: 20px;
-    color: #9befff;
-    margin-bottom: 10px;
-}
-
-.preview-domain {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0ff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0,255,255,0.8);
-}
-
-.continue-button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    color: #02141c;
-    border-radius: 12px;
-    background: linear-gradient(135deg,#00d8ff,#0084ff);
-    box-shadow: 0 0 25px #00eaff;
-    transition: 0.25s ease;
-}
-
-.continue-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 35px #00eaff;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Center content */
+/* ===============================================
+   MAIN CENTER CONTENT (LOGO + TITLE + COUNTDOWN)
+=============================================== */
 .center-box {
     position: absolute;
-    top: 18%;   /* moved up */
+    top: 22%;                     /* PERFECT center for PC & mobile */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     z-index: 5;
+    width: 100%;
 }
-
 
 /* Logo */
 .logo {
@@ -152,127 +117,142 @@ body {
 
 @keyframes pulse {
     0% { filter: drop-shadow(0 0 10px #0ff); }
-    50% { filter: drop-shadow(0 0 25px #0ff); }
+    50% { filter: drop-shadow(0 0 28px #0ff); }
     100% { filter: drop-shadow(0 0 10px #0ff); }
 }
 
-/* Neon title */
+/* Neon Title */
 .neon-title {
     font-size: 42px;
-    margin: 5px 0 15px;
+    margin: 5px 0 10px;
     color: #0ff;
     text-shadow:
         0 0 5px #0ff,
         0 0 15px #0ff,
-        0 0 30px rgba(0, 255, 255, 0.7),
-        0 0 60px rgba(0, 255, 255, 0.4);
+        0 0 30px rgba(0,255,255,0.7),
+        0 0 60px rgba(0,255,255,0.4);
 }
 
-/* Countdown text */
+/* Countdown Text */
 .countdown-text {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 700;
     text-shadow: 0 0 10px rgba(255,255,255,0.7);
 }
 
-/* Neon Button */
+/* Button Mode Btn */
 .neon-button {
     margin-top: 20px;
     padding: 12px 36px;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 22px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     color: #031017;
     background: radial-gradient(circle at 10% 20%, #00e6ff, #007bff 70%);
     box-shadow: 0 0 20px rgba(0,255,255,0.6);
-    transition: all 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .neon-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0,255,255,0.8);
+    box-shadow: 0 0 32px rgba(0,255,255,0.9);
 }
 
-.neon-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 40px #0ff;
-}
-
-/* Floating photos */
-.photo {
+/* ===============================================
+   PREVIEW BOX (INTERSTITIAL PAGE)
+=============================================== */
+.preview-box {
     position: absolute;
-    width: 180px;
-    border-radius: 15px;
-    opacity: 0.9;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    z-index: 1;
+    top: 68%;                 /* FINAL PERFECT POSITION */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    max-width: 90%;
+    padding: 25px;
+    text-align: center;
+    border-radius: 18px;
+    background: rgba(0, 25, 40, 0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.45);
+    z-index: 10;
 }
 
-.photo-left {
-    top: 15%;
-    left: 5%;
-    transform: rotate(-8deg);
+.preview-title {
+    font-size: 20px;
+    color: #baf7ff;
+    margin-bottom: 10px;
 }
 
-.photo-right {
-    bottom: 10%;
-    right: 6%;
-    transform: rotate(6deg);
+.preview-domain {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0ff;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px #0ff;
 }
 
-/* ===========================
-   MOBILE RESPONSIVE FIX
-=========================== */
+.continue-button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    color: #02141c;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#00d8ff,#0084ff);
+    box-shadow: 0 0 22px #00eaff;
+    transition: 0.25s ease;
+}
+
+.continue-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 38px #00eaff;
+}
+
+.hidden { display: none; }
+
+/* ===============================================
+   RESPONSIVE FIXES (MOBILE)
+=============================================== */
 @media (max-width: 600px) {
 
-    /* Move center box UP */
+    body {
+        overflow-y: hidden;      /* stops vertical scroll */
+    }
+
     .center-box {
-        top: 15% !important;
-        transform: translateX(-50%);
+        top: 18%;
     }
 
-    /* Reduce logo size */
     .logo {
-        width: 110px !important;
+        width: 120px;
     }
 
-    /* Reduce title size */
     .neon-title {
-        font-size: 28px !important;
+        font-size: 30px;
     }
 
-    /* Reduce countdown size */
     .countdown-text {
-        font-size: 22px !important;
+        font-size: 22px;
     }
 
-    /* Move preview box further DOWN */
     .preview-box {
-        top: 75% !important;
-        width: 90% !important;
-        padding: 18px !important;
+        top: 72% !important;
+        width: 90%;
+        padding: 20px !important;
     }
 
-    /* Reduce preview text sizes */
-    #preview-domain {
+    .preview-title {
+        font-size: 16px !important;
+    }
+
+    .preview-domain {
         font-size: 20px !important;
     }
 
-    .preview-box h3 {
-        font-size: 16px !important;
-    }
-
-    /* Reduce button */
-    .neon-button,
-    #continueBtn {
-        font-size: 16px !important;
+    .continue-button {
         padding: 10px 20px !important;
+        font-size: 16px !important;
     }
 }
-
-
-
-
-

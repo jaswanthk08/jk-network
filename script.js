@@ -74,7 +74,7 @@ function startCountdown() {
 
     // FIRST DISPLAY
     countdownEl.innerHTML = `
-        <div>Opening JK Networks Secure Gateway…</div>
+        <div>Opening JK Networks Secure Gateway</div>
         <div style="margin-top:6px;">Launching in ${count}…</div>
     `;
 
@@ -83,7 +83,7 @@ function startCountdown() {
         count--;
 
         countdownEl.innerHTML = `
-            <div>Opening JK Networks Secure Gateway…</div>
+            <div>Opening JK Networks Secure Gateway</div>
             <div style="margin-top:6px;">Launching in ${count}…</div>
         `;
 
@@ -125,3 +125,4 @@ else if (mode === "button") {
         window.location.href = url;
     };
 }
+

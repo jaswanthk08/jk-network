@@ -13,7 +13,9 @@ const previewBox = document.getElementById("preview-box");
 const previewDomain = document.getElementById("preview-domain");
 const continueBtn = document.getElementById("continueBtn");
 
+const previewIcon = document.getElementById("preview-icon");  // NEW
 const centerBox = document.querySelector(".center-box");
+
 
 /* ================================
     FLOATING PARTICLES GENERATOR
@@ -32,30 +34,45 @@ function createParticles() {
 }
 createParticles();
 
+
 /* ================================
-    EXTRACT CLEAN DOMAIN NAME
+    EXTRACT DOMAIN
 ==================================*/
 function getDomain(link) {
     try {
-        let domain = new URL(link).hostname.replace("www.", "");
-        return domain;
+        return new URL(link).hostname.replace("www.", "");
     } catch {
         return "Unknown";
     }
 }
 
+
+/* ================================
+    LOAD FAVICON FOR PREVIEW
+==================================*/
+function loadFavicon(domain) {
+    if (!previewIcon) return;
+
+    const faviconURL = `https://www.google.com/s2/favicons?sz=128&domain=${domain}`;
+
+    previewIcon.src = faviconURL;
+    previewIcon.style.display = "block";
+}
+
+
 /* ================================
     SHOW PREVIEW SCREEN
 ==================================*/
 function showPreview() {
-    previewDomain.textContent = getDomain(url);
+    const domain = getDomain(url);
 
-    // AUTO MODE → hide center
+    previewDomain.textContent = domain;
+    loadFavicon(domain);
+
     if (mode === "auto") {
-        centerBox.style.display = "none";
+        centerBox.style.display = "block";
     }
 
-    // BUTTON MODE → keep logo/title visible
     if (mode === "button") {
         centerBox.style.display = "block";
     }
@@ -63,23 +80,20 @@ function showPreview() {
     previewBox.classList.remove("hidden");
 }
 
+
 /* ================================
-    START COUNTDOWN
+    START COUNTDOWN (AUTO MODE)
 ==================================*/
 function startCountdown() {
 
-    centerBox.style.display = "block";
-
     let count = 3;
 
-    // FIRST DISPLAY
     countdownEl.innerHTML = `
         <div>Opening JK Networks Secure Gateway</div>
         <div style="margin-top:6px;">Launching in ${count}…</div>
     `;
 
     let timer = setInterval(() => {
-
         count--;
 
         countdownEl.innerHTML = `
@@ -94,8 +108,9 @@ function startCountdown() {
     }, 1000);
 }
 
+
 /* ================================
-    MAIN LOGIC
+    MAIN PAGE LOGIC
 ==================================*/
 
 title.innerText = "JK Networks";
@@ -105,16 +120,19 @@ if (!url) {
     button.style.display = "none";
 }
 
+
 /* AUTO MODE */
 else if (mode === "auto") {
-    continueBtn.style.display = "none";
-    button.style.display = "none";
+    continueBtn.style.display = "none"; // hide button
+    button.style.display = "none";      // hide old button
+
     showPreview();
 
     setTimeout(() => {
         startCountdown();
     }, 1200);
 }
+
 
 /* BUTTON MODE */
 else if (mode === "button") {
@@ -125,4 +143,3 @@ else if (mode === "button") {
         window.location.href = url;
     };
 }
-

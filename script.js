@@ -13,7 +13,7 @@ const previewBox = document.getElementById("preview-box");
 const previewDomain = document.getElementById("preview-domain");
 const continueBtn = document.getElementById("continueBtn");
 
-const previewIcon = document.getElementById("preview-icon");  // NEW
+const previewIcon = document.getElementById("preview-icon");
 const centerBox = document.querySelector(".center-box");
 
 
@@ -36,7 +36,7 @@ createParticles();
 
 
 /* ================================
-    EXTRACT DOMAIN
+    GET CLEAN DOMAIN NAME
 ==================================*/
 function getDomain(link) {
     try {
@@ -48,20 +48,20 @@ function getDomain(link) {
 
 
 /* ================================
-    LOAD FAVICON FOR PREVIEW
+    LOAD FAVICON (TRANSPARENT IF POSSIBLE)
 ==================================*/
 function loadFavicon(domain) {
     if (!previewIcon) return;
 
-    const faviconURL = `https://www.google.com/s2/favicons?sz=128&domain=${domain}`;
+    const iconURL = `https://www.google.com/s2/favicons?sz=128&domain=${domain}`;
 
-    previewIcon.src = faviconURL;
+    previewIcon.src = iconURL;
     previewIcon.style.display = "block";
 }
 
 
 /* ================================
-    SHOW PREVIEW SCREEN
+    SHOW PREVIEW BOX
 ==================================*/
 function showPreview() {
     const domain = getDomain(url);
@@ -69,31 +69,28 @@ function showPreview() {
     previewDomain.textContent = domain;
     loadFavicon(domain);
 
-    if (mode === "auto") {
-        centerBox.style.display = "block";
-    }
+    // Always show main branding box
+    centerBox.style.display = "block";
 
-    if (mode === "button") {
-        centerBox.style.display = "block";
-    }
-
+    // Show preview modal
     previewBox.classList.remove("hidden");
 }
 
 
 /* ================================
-    START COUNTDOWN (AUTO MODE)
+    COUNTDOWN START (AUTO MODE)
 ==================================*/
 function startCountdown() {
 
     let count = 3;
 
+    // Initial print
     countdownEl.innerHTML = `
         <div>Opening JK Networks Secure Gateway</div>
         <div style="margin-top:6px;">Launching in ${count}…</div>
     `;
 
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
         count--;
 
         countdownEl.innerHTML = `
@@ -110,7 +107,7 @@ function startCountdown() {
 
 
 /* ================================
-    MAIN PAGE LOGIC
+    MAIN LOGIC
 ==================================*/
 
 title.innerText = "JK Networks";
@@ -121,10 +118,11 @@ if (!url) {
 }
 
 
-/* AUTO MODE */
+/* -------- AUTO MODE -------- */
 else if (mode === "auto") {
+
     continueBtn.style.display = "none"; // hide button
-    button.style.display = "none";      // hide old button
+    button.style.display = "none";      // hide old click btn
 
     showPreview();
 
@@ -134,9 +132,10 @@ else if (mode === "auto") {
 }
 
 
-/* BUTTON MODE */
+/* -------- BUTTON MODE -------- */
 else if (mode === "button") {
-    button.style.display = "none";
+
+    button.style.display = "none"; 
     showPreview();
 
     continueBtn.onclick = () => {

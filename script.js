@@ -67,17 +67,25 @@ function showPreview() {
     START COUNTDOWN
 ==================================*/
 function startCountdown() {
-   // previewBox.classList.add("hidden");
 
-    // After preview, always show main box
     centerBox.style.display = "block";
 
-    let count = 5;
-    countdownEl.innerText = `Redirecting in ${count}...`;
+    let count = 3;
+
+    // FIRST DISPLAY
+    countdownEl.innerHTML = `
+        <div>Opening JK Networks Secure Gateway…</div>
+        <div style="margin-top:6px;">Launching in ${count}…</div>
+    `;
 
     let timer = setInterval(() => {
+
         count--;
-        countdownEl.innerText = `Redirecting in ${count}...`;
+
+        countdownEl.innerHTML = `
+            <div>Opening JK Networks Secure Gateway…</div>
+            <div style="margin-top:6px;">Launching in ${count}…</div>
+        `;
 
         if (count === 0) {
             clearInterval(timer);
@@ -117,6 +125,3 @@ else if (mode === "button") {
         window.location.href = url;
     };
 }
-
-
-

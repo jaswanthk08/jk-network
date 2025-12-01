@@ -10,7 +10,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;      /* Prevent horizontal scroll */
+    overflow-x: hidden;
     overscroll-behavior: none;
 }
 
@@ -22,7 +22,7 @@ body {
     font-family: "Poppins", sans-serif;
     color: white;
     position: relative;
-    overflow-y: hidden;      /* Prevent vertical scroll in redirect screen */
+    overflow-y: hidden;
 }
 
 /* Rotating glow */
@@ -42,9 +42,7 @@ body {
     z-index: 0;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Noise / Grain */
 .bg-noise {
@@ -84,22 +82,15 @@ body {
                floatX 6s infinite alternate ease-in-out;
 }
 
-@keyframes floatY {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(35px); }
-}
-
-@keyframes floatX {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(40px); }
-}
+@keyframes floatY { 0% { transform: translateY(0); } 100% { transform: translateY(35px); } }
+@keyframes floatX { 0% { transform: translateX(0); } 100% { transform: translateX(40px); } }
 
 /* ===============================================
    MAIN CENTER CONTENT (LOGO + TITLE + COUNTDOWN)
 =============================================== */
 .center-box {
     position: absolute;
-    top: 22%;                     /* PERFECT center for PC & mobile */
+    top: 20%;               /* moved higher for no overlap */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -133,10 +124,11 @@ body {
         0 0 60px rgba(0,255,255,0.4);
 }
 
-/* Countdown Text */
+/* Countdown */
 .countdown-text {
     font-size: 32px;
     font-weight: 700;
+    margin-top: 4px;
     text-shadow: 0 0 10px rgba(255,255,255,0.7);
 }
 
@@ -160,16 +152,16 @@ body {
 }
 
 /* ===============================================
-   PREVIEW BOX (INTERSTITIAL PAGE)
+   PREVIEW BOX (INTERSTITIAL SCREEN)
 =============================================== */
 .preview-box {
     position: absolute;
-    top: 68%;                 /* FINAL PERFECT POSITION */
+    top: 73%;                 /* moved slightly down */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 330px;
     max-width: 90%;
-    padding: 25px;
+    padding: 26px;
     text-align: center;
     border-radius: 18px;
     background: rgba(0, 25, 40, 0.55);
@@ -177,6 +169,17 @@ body {
     border: 1px solid rgba(0, 255, 255, 0.25);
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.45);
     z-index: 10;
+}
+
+/* ⭐ NEW FAVICON PREVIEW */
+.preview-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 18px rgba(0,255,255,0.6);
+    display: none;   /* hidden until JS loads icon */
 }
 
 .preview-title {
@@ -217,39 +220,29 @@ body {
 =============================================== */
 @media (max-width: 600px) {
 
-    body {
-        overflow-y: hidden;      /* stops vertical scroll */
-    }
+    body { overflow-y: hidden; }
 
-    .center-box {
-        top: 18%;
-    }
+    .center-box { top: 16%; }
 
-    .logo {
-        width: 120px;
-    }
+    .logo { width: 120px; }
 
-    .neon-title {
-        font-size: 30px;
-    }
+    .neon-title { font-size: 30px; }
 
-    .countdown-text {
-        font-size: 22px;
-    }
+    .countdown-text { font-size: 22px; }
 
     .preview-box {
-        top: 72% !important;
-        width: 90%;
+        top: 76% !important;
+        width: 92%;
         padding: 20px !important;
     }
 
-    .preview-title {
-        font-size: 16px !important;
+    .preview-icon {
+        width: 40px;
+        height: 40px;
     }
 
-    .preview-domain {
-        font-size: 20px !important;
-    }
+    .preview-title { font-size: 16px !important; }
+    .preview-domain { font-size: 20px !important; }
 
     .continue-button {
         padding: 10px 20px !important;

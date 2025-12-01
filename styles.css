@@ -165,14 +165,18 @@ body {
 
 /* ⭐ Favicon */
 .preview-icon {
-    width: 52px;
-    height: 52px;
-    margin: 0 auto 14px auto;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 0 18px rgba(0,255,255,0.7);
-    display: none;
+    width: 56px;
+    height: 56px;
+    display: block;
+    margin: 0 auto 14px;
+
+    border-radius: 50%;      /* round icon */
+    object-fit: contain;     /* NO stretching */
+    background: transparent; /* remove dark box */
+
+    box-shadow: 0 0 12px rgba(0,255,255,0.4);  /* neon glow */
 }
+
 
 .preview-title {
     font-size: 20px;
@@ -240,3 +244,4 @@ body {
         font-size: 16px !important;
     }
 }
+

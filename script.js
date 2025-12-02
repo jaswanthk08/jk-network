@@ -82,7 +82,7 @@ function showPreview() {
 ==================================*/
 function startCountdown() {
 
-    let count = 3;
+    let count = 5;
 
     // Initial print
     countdownEl.innerHTML = `
@@ -142,3 +142,4 @@ else if (mode === "button") {
         window.location.href = url;
     };
 }
+

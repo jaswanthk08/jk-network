@@ -86,7 +86,7 @@ body {
 =============================================== */
 .center-box {
     position: absolute;
-    top: 18%;              /* ★ updated — perfect spacing for PC + Mobile */
+    top: 15%;              /* ★ updated — perfect spacing for PC + Mobile */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -244,4 +244,5 @@ body {
         font-size: 16px !important;
     }
 }
+
 

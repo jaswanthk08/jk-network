@@ -3,7 +3,7 @@
 <head>
   <!-- PASSWORD PROTECTION -->
   <script>
-    const correctPassword = "8903"; // CHANGE THIS
+    const correctPassword = "8903";
 
     let userPass = localStorage.getItem("jk_admin_access");
 
@@ -14,7 +14,7 @@
             alert("Access Granted ✔");
         } else {
             alert("Access Denied ❌");
-            window.location.href = "index.html"; // kick out
+            window.location.href = "index.html";
         }
     }
   </script>
@@ -24,191 +24,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* Background */
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       min-height: 100vh;
+      background: radial-gradient(circle at 10% 20%, #081122, #020409 60%, #000);
+      font-family: "Poppins", sans-serif;
+      color: #f7f7f7;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Poppins", system-ui, sans-serif;
-      background: radial-gradient(circle at 10% 20%, #081122, #020409 60%, #000);
-      color: #f7f7f7;
       overflow: hidden;
+      position: relative;
     }
 
-    /* Moving gradient overlay */
+    /* Neon Particle Canvas */
+    #jkParticles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Glow background */
     .bg-glow {
       position: absolute;
       inset: -50%;
       background: conic-gradient(
         from 180deg,
         rgba(0, 255, 255, 0.1),
-        rgba(0, 0, 128, 0.3),
+        rgba(0, 0, 128, 0.35),
         rgba(255, 0, 255, 0.15),
         rgba(0, 255, 255, 0.1)
       );
-      filter: blur(80px);
-      opacity: 0.5;
-      animation: spin 25s linear infinite;
-      z-index: 0;
+      filter: blur(90px);
+      opacity: 0.6;
+      animation: spin 28s linear infinite;
+      z-index: 1;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Main card */
+    /* Admin Card */
     .admin-card {
       position: relative;
-      z-index: 1;
       width: 95%;
       max-width: 650px;
-      background: rgba(5, 10, 25, 0.8);
+      background: rgba(5, 10, 25, 0.85);
       border-radius: 20px;
-      padding: 28px 24px 26px;
+      padding: 28px 24px;
       border: 1px solid rgba(0, 255, 255, 0.25);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8),
-                  0 0 35px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 40px rgba(0,255,255,0.15);
       backdrop-filter: blur(18px);
-      overflow: hidden;
-    }
-
-    .admin-card::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(
-        120deg,
-        rgba(0, 255, 255, 0.4),
-        transparent,
-        rgba(255, 0, 255, 0.35)
-      );
-      opacity: 0.25;
-      pointer-events: none;
+      z-index: 2;
     }
 
     .admin-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .admin-title {
       font-size: 24px;
       font-weight: 600;
-      letter-spacing: 1px;
     }
 
     .neon {
       color: #0ff;
-      text-shadow: 0 0 4px #0ff, 0 0 8px #0ff, 0 0 16px rgba(0, 255, 255, 0.8);
+      text-shadow: 0 0 4px #0ff, 0 0 8px #0ff, 0 0 20px #0ff;
     }
 
     .admin-badge {
-      font-size: 11px;
-      text-transform: uppercase;
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.6);
-      background: rgba(0, 0, 0, 0.4);
+      font-size: 11px;
+      border: 1px solid #0ff8;
+      background: rgba(0,15,20,0.4);
     }
 
     .admin-subtitle {
       font-size: 13px;
-      color: #c4c6ff;
-      margin-bottom: 18px;
-      opacity: 0.85;
+      opacity: 0.8;
+      margin-top: 3px;
     }
 
-    /* Form Inputs */
-    .form-group { margin-bottom: 16px; }
-    label { font-size: 13px; margin-bottom: 6px; }
+    .form-group { margin: 16px 0; }
+    label { font-size: 13px; }
 
     .input-row {
       display: flex;
       gap: 8px;
-      align-items: center;
+      margin-top: 6px;
     }
 
     input[type="url"] {
       flex: 1;
       padding: 10px;
       border-radius: 10px;
-      border: 1px solid rgba(0,255,255,0.2);
-      background: rgba(3, 6, 20, 0.8);
-      color: #e7faff;
-      font-size: 13px;
+      background: rgba(3, 8, 22, 0.85);
+      border: 1px solid rgba(0,255,255,0.25);
+      color: #e8faff;
       outline: none;
     }
 
     input:focus {
-      border-color: rgba(0,255,255,0.7);
-      box-shadow: 0 0 8px rgba(0,255,255,0.4);
+      border-color: #0ff;
+      box-shadow: 0 0 12px #0ff8;
     }
 
-    /* Buttons */
     .primary-btn {
-      padding: 10px 18px;
+      padding: 9px 18px;
       border-radius: 999px;
       border: none;
-      background: radial-gradient(circle at 10% 20%, #00e6ff, #007bff 70%);
-      color: #020409;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 0 16px rgba(0,255,255,0.6);
-      transition: 0.2s;
-    }
-
-    .primary-btn:hover {
-      box-shadow: 0 0 22px rgba(0,255,255,0.9);
-      transform: scale(1.02);
-    }
-
-    /* Logout Button */
-    .logout-btn {
-      margin-top: 16px;
-      padding: 10px 22px;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 10px;
-      border: 1px solid rgba(0,255,255,0.5);
-      background: rgba(0,20,30,0.7);
-      color: #0ff;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(0,255,255,0.4);
-      transition: 0.2s;
-      width: 100%;
-    }
-
-    .logout-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 16px rgba(0,255,255,0.8);
+      background: linear-gradient(135deg, #00eaff, #006dff);
+      box-shadow: 0 0 20px rgba(0,255,255,0.5);
     }
 
     .mono-output {
-      width: 100%;
       padding: 8px 10px;
-      border-radius: 9px;
-      background: rgba(2,8,24,0.9);
-      border: 1px solid rgba(0,255,255,0.2);
-      font-family: "JetBrains Mono", monospace;
-      color: #e7f5ff;
-      font-size: 12px;
-      overflow-x: auto;
+      margin-top: 4px;
+      background: rgba(3,8,22,0.9);
+      border: 1px solid rgba(0,255,255,0.25);
+      border-radius: 8px;
       white-space: nowrap;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
     }
 
     .copy-btn {
       padding: 4px 10px;
-      border-radius: 999px;
       font-size: 11px;
+      border: 1px solid #0ff8;
+      border-radius: 999px;
       cursor: pointer;
-      border: 1px solid rgba(0,255,255,0.5);
+      background: transparent;
+      color: #0ff;
     }
 
-    /* Toast */
+    .logout-btn {
+      margin-top: 18px;
+      width: 100%;
+      padding: 10px;
+      background: rgba(0,15,20,0.8);
+      border: 1px solid #0ff7;
+      border-radius: 10px;
+      color: #0ff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
     .toast {
       position: fixed;
       bottom: 18px;
@@ -217,9 +191,10 @@
       background: rgba(0,0,0,0.8);
       padding: 10px 18px;
       border-radius: 999px;
-      color: white;
       opacity: 0;
       transition: 0.3s;
+      color: white;
+      z-index: 50;
     }
 
     .toast.show { opacity: 1; }
@@ -227,61 +202,60 @@
 </head>
 
 <body>
+
+  <!-- Neon Particle Canvas -->
+  <canvas id="jkParticles"></canvas>
+
   <div class="bg-glow"></div>
 
   <div class="admin-card">
-
     <div class="admin-header">
       <div>
         <div class="admin-title"><span class="neon">JK Networks</span> Admin</div>
-        <div class="admin-subtitle">Paste any original URL and generate redirect links.</div>
+        <div class="admin-subtitle">Generate redirect links effortlessly</div>
       </div>
-      <div class="admin-badge">Internal Use</div>
+      <div class="admin-badge">Internal</div>
     </div>
 
-    <!-- Input -->
+    <!-- Input Section -->
     <div class="form-group">
       <label>Original URL</label>
       <div class="input-row">
         <input type="url" id="originalUrl" placeholder="Paste URL here...">
         <button id="generateBtn" class="primary-btn">⚡ Generate</button>
       </div>
-      <div class="hint">
-        Base URL:
-        <span class="neon" style="font-size: 11px;">https://jaswanthk08.github.io/jk-network/</span>
-      </div>
+
+      <small style="opacity:0.7">Base URL:
+        <span class="neon" style="font-size:11px">
+          https://jaswanthk08.github.io/jk-network/
+        </span>
+      </small>
     </div>
 
-    <div class="outputs">
-      <div class="output-block">
-        <div class="output-label">Auto Redirect Link (5 sec)
-          <button class="copy-btn" data-target="autoLink">Copy</button>
-        </div>
-        <div id="autoLink" class="mono-output">—</div>
+    <!-- Output -->
+    <div class="output-block">
+      <div style="margin-bottom:4px">
+        Auto Redirect Link (5 sec)
+        <button class="copy-btn" data-target="autoLink">Copy</button>
       </div>
-
-      <div class="output-block">
-        <div class="output-label">Button Redirect Link
-          <button class="copy-btn" data-target="buttonLink">Copy</button>
-        </div>
-        <div id="buttonLink" class="mono-output">—</div>
-      </div>
+      <div id="autoLink" class="mono-output">—</div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer-line">
-      <span style="font-size: 12px;">Links auto-encoded for safety.</span>
-      <span class="badge-pill">JK Networks</span>
+    <div class="output-block" style="margin-top:12px">
+      <div style="margin-bottom:4px">
+        Button Redirect Link 
+        <button class="copy-btn" data-target="buttonLink">Copy</button>
+      </div>
+      <div id="buttonLink" class="mono-output">—</div>
     </div>
 
-    <!-- LOGOUT BUTTON -->
+    <!-- Logout -->
     <button class="logout-btn" onclick="logout()">Logout</button>
-
   </div>
 
-  <!-- Toast -->
   <div id="toast" class="toast">Copied!</div>
 
+  <!-- ADMIN JS -->
   <script>
     const baseUrl = "https://jaswanthk08.github.io/jk-network/";
 
@@ -295,14 +269,14 @@
     function showToast(msg) {
       toast.textContent = msg;
       toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1500);
+      setTimeout(() => toast.classList.remove("show"), 1300);
     }
 
     function generateLinks() {
-      const original = originalInput.value.trim();
-      if (!original) return showToast("Paste a valid URL!");
+      const url = originalInput.value.trim();
+      if (!url) return showToast("Enter URL first!");
 
-      const encoded = encodeURIComponent(original);
+      const encoded = encodeURIComponent(url);
 
       autoLinkEl.textContent = `${baseUrl}?mode=auto&url=${encoded}`;
       buttonLinkEl.textContent = `${baseUrl}?mode=button&url=${encoded}`;
@@ -314,19 +288,89 @@
 
     document.querySelectorAll(".copy-btn").forEach(btn => {
       btn.onclick = () => {
-        const text = document.getElementById(btn.dataset.target).textContent;
-        if (text === "—") return showToast("Generate link first!");
-        navigator.clipboard.writeText(text);
+        const target = document.getElementById(btn.dataset.target).textContent;
+        if (target === "—") return showToast("Generate first!");
+        navigator.clipboard.writeText(target);
         showToast("Copied ✔");
       };
     });
 
-    /* LOGOUT FUNCTION */
     function logout() {
       localStorage.removeItem("jk_admin_access");
       alert("Logged out!");
       location.reload();
     }
+  </script>
+
+  <!-- NEON PARTICLE FIELD JS -->
+  <script>
+    const canvas = document.getElementById("jkParticles");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    }
+    resizeCanvas();
+    addEventListener("resize", resizeCanvas);
+
+    let mouse = { x: innerWidth / 2, y: innerHeight / 2 };
+    addEventListener("mousemove", e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    const COUNT = 45;
+    const particles = [];
+
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        vx: (-0.25 + Math.random() * 0.5),
+        vy: (-0.25 + Math.random() * 0.5),
+        r: 1 + Math.random() * 2,
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const pull = Math.min(120 / dist, 0.25);
+
+        p.vx += (dx / dist) * pull * 0.02;
+        p.vy += (dy / dist) * pull * 0.02;
+
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 25);
+        g.addColorStop(0, "rgba(0,255,255,0.9)");
+        g.addColorStop(0.4, "rgba(0,255,255,0.4)");
+        g.addColorStop(1, "rgba(0,255,255,0)");
+
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
   </script>
 
 </body>
